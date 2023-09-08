@@ -84,7 +84,7 @@ function updateUI() {
 
     // Play a sound when changing state
     if (currentTime == 1) {
-        let audio = new Audio("sound/bell.wav");
+        let audio = new Audio("sound/bell.mp3");
         audio.play();
     }
 }

@@ -2,19 +2,28 @@ var workTime = 25,
     breakTime = 5,
     currentTime = 0,
     isWork = true,
-    isPaused = true;
-const timerElement = document.getElementById("timer");
+    isPaused = true,
+    currentInterval = null;
+const timerElement = document.getElementById("timer"), startButton = document.getElementById("startButton"), resetButton = document.getElementById("resetButton");
+resetButton.style.display = "none";
+
 // A function used to start the timer
 function startTimer() {
-    isPaused = false;
-    var time = 0, currentInterval = null;
-    if (isWork) {
-        currentTime = workTime*60;
-        currentInterval = setInterval(() => updateTimer(), 2);
-        console.log("Work time started");
+    isPaused = !isPaused;
+    if (isPaused == false) {
+        startButton.textContent = "Pause";
+        resetButton.style.display = "none";
+        if (isWork) {
+            currentTime = workTime * 60;
+            currentInterval = setInterval(() => updateTimer(), 1);
+        } else {
+            currentTime = breakTime * 60;
+            currentInterval = setInterval(() => updateTimer(), 1000);
+        }
     } else {
-        currentTime = breakTime*60;
-        currentInterval = setInterval(() => updateTimer(), 1000);
+        startButton.textContent = "Resume";
+        resetButton.style.display = "inline-block";
+        clearInterval(currentInterval);
     }
 }
 
@@ -33,4 +42,14 @@ function updateTimer() {
         startTimer();
         clearInterval(currentInterval);
     }
+}
+
+// A function used to reset the timer
+function resetTimer() {
+    isPaused = true;
+    isWork = true;
+    startButton.textContent = "Start";
+    resetButton.style.display = "none";
+    clearInterval(currentInterval);
+    currentTime = workTime * 60;
 }

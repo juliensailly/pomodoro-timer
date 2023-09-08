@@ -188,6 +188,17 @@ function onPageLoad() {
         });
 
     updateUI();
+
+    // Add event listeners to dev tools
+    document.getElementById("devTools").addEventListener("click", function () {
+        if (document.getElementById("devButtons").style.display != "none") {
+            document.getElementById("devButtons").style.display = "none";
+            this.textContent = "Dev Tools +";
+        } else {
+            document.getElementById("devButtons").style.display = "flex";
+            this.textContent = "Dev Tools -";
+        }
+    });
 }
 
 // A function used to delete the local storage

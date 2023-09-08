@@ -161,3 +161,24 @@ form.timerOptions label {
     font-size: 1.3rem;
     font-weight: 700;
 }
+
+/* Dev tools style */
+
+#devTools {
+    text-align: center;
+}
+
+#devTools h2 {
+    cursor: pointer;
+}
+
+#devTools div#devButtons {
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#devTools div button {
+    margin: 1rem;
+}

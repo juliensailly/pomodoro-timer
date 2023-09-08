@@ -61,7 +61,7 @@ function updateUI() {
     minutes = minutes < 10 ? "0" + minutes : minutes;
     secondes = secondes < 10 ? "0" + secondes : secondes;
     timerElement.innerText = `${minutes}:${secondes}`;
-    
+
     if (isWork) {
         document.body.style.backgroundColor = "#f05454";
         document.getElementById("title").innerText = "Work";
@@ -70,9 +70,15 @@ function updateUI() {
         document.getElementById("title").innerText = "Break";
     }
 
-    if (isPaused) {
+    if (isPaused && isRunning == true) {
         startButton.textContent = "Resume";
         resetButton.style.display = "inline-block";
+    } else if (isPaused && isRunning == false) {
+        startButton.textContent = "Start";
+        resetButton.style.display = "none";
+    } else {
+        startButton.textContent = "Pause";
+        resetButton.style.display = "none";
     }
 }
 
@@ -96,3 +102,48 @@ function resetTimer() {
 function devTime() {
     currentTime = 3;
 }
+
+// A function used to add Event Listeners to the inputs
+function monitorTimesInputs() {
+    document.getElementById("workTime").addEventListener("change", function () {
+        workTime = this.value;
+        if (isWork) {
+            currentTime = workTime * 60;
+            updateUI();
+        }
+        localStorage.setItem("workTime", workTime);
+    });
+    document.getElementById("breakTime").addEventListener("change", function () {
+        breakTime = this.value;
+        if (!isWork) {
+            currentTime = breakTime * 60;
+            updateUI();
+        }
+        localStorage.setItem("breakTime", breakTime);
+    });
+}
+
+// A function used to initialize the page
+function onPageLoad() {
+    updateUI();
+    monitorTimesInputs();
+
+    if (localStorage.getItem("workTime") != null) {
+        workTime = localStorage.getItem("workTime");
+        document.getElementById("workTime").value = workTime;
+    }
+    if (localStorage.getItem("breakTime") != null) {
+        breakTime = localStorage.getItem("breakTime");
+        document.getElementById("breakTime").value = breakTime;
+    }
+
+    currentTime = workTime * 60;
+
+    let minutes = parseInt(currentTime / 60, 10);
+    let secondes = parseInt(currentTime % 60, 10);
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    secondes = secondes < 10 ? "0" + secondes : secondes;
+    timerElement.innerText = `${minutes}:${secondes}`;
+}
+
+onPageLoad();

@@ -4,19 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Pomodoro timer</title>
 </head>
 <body>
     <h1>Pomodoro timer</h1>
-    <table>
-        <tr>
-            <td>Work</td>
-            <td>Break</td>
-        </tr>
-    </table>
+    <h1 id="title">Work</h1>
     <div id="timer">25:00</div>
     <button id="startButton" onclick="startTimer()">Start</button>
     <button id="resetButton" onclick="resetTimer()">Reset timer</button>
+
+    <form action="">
+        <label for="workTime">Work time</label>
+        <input type="number" id="workTime" name="workTime" value="25" min="1" max="60">
+        <label for="breakTime">Break time</label>
+        <input type="number" id="breakTime" name="breakTime" value="5" min="1" max="60">
+    </form>
+
+    <hr>
+    <h2>Dev tools</h2>
+    <button onclick="devTime()">Put time at 3s</button>
 
 
     <script src="script/main.js"></script>

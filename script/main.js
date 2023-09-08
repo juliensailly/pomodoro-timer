@@ -124,7 +124,12 @@ function devTime() {
 // A function used to add Event Listeners to the inputs
 function monitorTimesInputs() {
     document.getElementById("workTime").addEventListener("change", function () {
-        workTime = this.value;
+        if (this.value >= 1 && this.value <= 60) {
+            workTime = this.value;
+        } else {
+            this.value = workTime;
+        }
+
         if (isWork) {
             currentTime = workTime * 60;
             updateUI();
@@ -134,7 +139,12 @@ function monitorTimesInputs() {
     document
         .getElementById("breakTime")
         .addEventListener("change", function () {
-            breakTime = this.value;
+            if (this.value >= 1 && this.value <= 60) {
+                breakTime = this.value;
+            } else {
+                this.value = breakTime;
+            }
+
             if (!isWork) {
                 currentTime = breakTime * 60;
                 updateUI();

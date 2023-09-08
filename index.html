@@ -20,25 +20,30 @@
                 <button id="resetButton" onclick="resetTimer()">Reset timer</button>
             </div>
 
-            <form action="">
-                <label for="workTime">Work time</label>
-                <input
+            <form action="" class="timerOptions">
+                <div>
+                    <label for="workTime">Work time</label>
+                    <input
                     type="number"
                     id="workTime"
                     name="workTime"
                     value="25"
                     min="1"
                     max="120"
-                />
-                <label for="breakTime">Break time</label>
-                <input
+                    />
+                </div>
+                <div>
+                    <label for="breakTime">Break time</label>
+                    <input
                     type="number"
                     id="breakTime"
                     name="breakTime"
                     value="5"
                     min="1"
                     max="120"
-                />
+                    />
+                </div>
+                
             </form>
 
             <h2>Dev tools</h2>

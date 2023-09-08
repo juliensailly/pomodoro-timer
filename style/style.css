@@ -15,6 +15,10 @@
     --tertiary-color: #ff0000;
 }
 
+body {
+    transition: all 0.5s ease-in-out;
+}
+
 /* Main Title */
 
 #main-title {
@@ -60,9 +64,7 @@ div#timer {
     background-color: var(--tertiary-color);
     border-radius: 50%;
     width: 300px;
-    max-width: 300px;
     height: 300px;
-    max-height: 300px;
     border: #ffffff solid 8px;
     font-size: 3rem;
 }
@@ -84,4 +86,40 @@ div#controlTimerButtons button {
     font-size: 1.5rem;
     font-weight: 700;
     cursor: pointer;
+}
+
+/* Timer options inputs style */
+
+form.timerOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+}
+
+form.timerOptions div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form.timerOptions input {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+form.timerOptions input:focus {
+    outline: none;
+}
+
+form.timerOptions label {
+    font-size: 1.3rem;
+    font-weight: 700;
 }

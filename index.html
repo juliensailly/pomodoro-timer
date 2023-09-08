@@ -1,30 +1,50 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Pomodoro timer</title>
-</head>
-<body>
-    <h1>Pomodoro timer</h1>
-    <h1 id="title">Work</h1>
-    <div id="timer">25:00</div>
-    <button id="startButton" onclick="startTimer()">Start</button>
-    <button id="resetButton" onclick="resetTimer()">Reset timer</button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style/style.css" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <title>Pomodoro timer</title>
+    </head>
+    <body>
+        <div id="main-title">
+            <h1>Pomodoro timer</h1>
+            <img src="img/hourglass-end-solid.png" alt="Logo">
+        </div>
+        <div id="container">
+            <h2 id="title">Work</h1>
+            <div id="timer">25:00</div>
+            <div id="controlTimerButtons">
+                <button id="startButton" onclick="startTimer()">Start</button>
+                <button id="resetButton" onclick="resetTimer()">Reset timer</button>
+            </div>
 
-    <form action="">
-        <label for="workTime">Work time</label>
-        <input type="number" id="workTime" name="workTime" value="25" min="1" max="120">
-        <label for="breakTime">Break time</label>
-        <input type="number" id="breakTime" name="breakTime" value="5" min="1" max="120">
-    </form>
+            <form action="">
+                <label for="workTime">Work time</label>
+                <input
+                    type="number"
+                    id="workTime"
+                    name="workTime"
+                    value="25"
+                    min="1"
+                    max="120"
+                />
+                <label for="breakTime">Break time</label>
+                <input
+                    type="number"
+                    id="breakTime"
+                    name="breakTime"
+                    value="5"
+                    min="1"
+                    max="120"
+                />
+            </form>
 
-    <hr>
-    <h2>Dev tools</h2>
-    <button onclick="devTime()">Put time at 3s</button>
+            <h2>Dev tools</h2>
+            <button onclick="devTime()">Put time at 3s</button>
+        </div>
 
-    <script src="script/main.js"></script>
-</body>
+        <script src="script/main.js"></script>
+    </body>
 </html>

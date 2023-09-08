@@ -62,13 +62,13 @@ function updateUI() {
     timerElement.innerText = `${minutes}:${secondes}`;
 
     if (isWork) {
-        // document.body.style.backgroundImage = "linear-gradient(90deg, rgba(240,84,84,1) 0%, rgba(240,84,84,1) 50%, rgba(22,160,133,1) 50%)";
         document.getElementById("workPhase").style.backgroundColor = "#ffffff";
         document.getElementById("breakPhase").style.backgroundColor = "transparent";
+        document.getElementById("timer").style.backgroundColor = "var(--timer-work)";
     } else {
-        // document.body.style.backgroundImage = "linear-gradient(90deg, rgba(22,160,133,1) 0%, rgba(22,160,133,1) 50%, rgba(240,84,84,1) 50%)";
         document.getElementById("workPhase").style.backgroundColor = "transparent";
         document.getElementById("breakPhase").style.backgroundColor = "#ffffff";
+        document.getElementById("timer").style.backgroundColor = "var(--timer-break)";
     }
 
     if (isPaused && isRunning == true) {
@@ -88,7 +88,6 @@ function updateUI() {
         percent = 100 - percent;
     }
     document.body.style.backgroundPositionX = `${percent}%`;
-    console.log(percent);
 
     // Play a sound when changing state
     if (currentTime == 1) {
@@ -174,8 +173,14 @@ function onPageLoad() {
     updateUI();
 }
 
+// A function used to delete the local storage
+function deleteAllLocalStorage() {
+    localStorage.removeItem("workTime");
+    localStorage.removeItem("breakTime");
+    location.reload();
+}
+
 onPageLoad();
 
 // TO-DO:
-// - Allow the user to select the phase
 // - Store currentTime and currentPhase in the local storage and display them when the page is loaded

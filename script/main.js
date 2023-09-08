@@ -190,13 +190,16 @@ function onPageLoad() {
     updateUI();
 
     // Add event listeners to dev tools
-    document.getElementById("devTools").addEventListener("click", function () {
-        if (document.getElementById("devButtons").style.display != "none") {
+    document.getElementById("devToolsTitle").addEventListener("click", function () {
+        console.log(document.getElementById("devButtons").className);
+        if (document.getElementById("devButtons").className == "active") {
             document.getElementById("devButtons").style.display = "none";
-            this.textContent = "Dev Tools +";
+            document.getElementById("devToolsTitle").textContent = "Dev tools +";
+            document.getElementById("devButtons").className = "inactive";
         } else {
             document.getElementById("devButtons").style.display = "flex";
-            this.textContent = "Dev Tools -";
+            document.getElementById("devToolsTitle").textContent = "Dev tools -";
+            document.getElementById("devButtons").className = "active";
         }
     });
 }

@@ -69,6 +69,7 @@ h1 {
     flex-direction: column;
     justify-content: start;
     align-items: center;
+    padding-bottom: 2rem;
 }
 
 /* Phase display */
@@ -164,21 +165,21 @@ form.timerOptions label {
 
 /* Dev tools style */
 
-#devTools {
+.devTools {
     text-align: center;
 }
 
-#devTools h2 {
+.devTools h2 {
     cursor: pointer;
 }
 
-#devTools div#devButtons {
+.devTools div#devButtons {
     display: none;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-#devTools div button {
+.devTools div button {
     margin: 1rem;
 }

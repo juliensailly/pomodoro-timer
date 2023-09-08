@@ -13,9 +13,9 @@
     --primary-color: #1a1a1a;
     --secondary-color: #ffffff;
     --timer-work: #ff0000;
-    --background-red: #FF6962;
+    --background-red: #ff6962;
     --background-green: #30dba9;
-    --timer-break: #04A777;
+    --timer-break: #04a777;
 }
 
 body {
@@ -25,7 +25,12 @@ body {
     background-size: 200vw;
     background-position-x: left;
     background-clip: border-box;
-    background-image: linear-gradient(90deg, var(--background-red) 0%, var(--background-red) 50%, var(--background-green) 50%);
+    background-image: linear-gradient(
+        90deg,
+        var(--background-red) 0%,
+        var(--background-red) 50%,
+        var(--background-green) 50%
+    );
 }
 
 /* Main Title */
@@ -48,6 +53,12 @@ h1 {
     font-weight: 700;
     text-align: left;
     margin-right: 1.5rem;
+}
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
 }
 
 /* Container layout */

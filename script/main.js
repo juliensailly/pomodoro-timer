@@ -1,3 +1,4 @@
+// Storage of state variables and important DOM elements
 var workTime = 25,
     breakTime = 5,
     currentTime = 0,
@@ -8,7 +9,6 @@ var workTime = 25,
 const timerElement = document.getElementById("timer"),
     startButton = document.getElementById("startButton"),
     resetButton = document.getElementById("resetButton");
-resetButton.style.display = "none";
 
 // A function used to start the timer
 function startTimer() {
@@ -53,7 +53,6 @@ function updateTimer() {
 
 // A function used to update UI and play a sound when changing state
 function updateUI() {
-    
     let minutes = parseInt(currentTime / 60, 10);
     let secondes = parseInt(currentTime % 60, 10);
 
@@ -63,12 +62,16 @@ function updateUI() {
 
     if (isWork) {
         document.getElementById("workPhase").style.backgroundColor = "#ffffff";
-        document.getElementById("breakPhase").style.backgroundColor = "transparent";
-        document.getElementById("timer").style.backgroundColor = "var(--timer-work)";
+        document.getElementById("breakPhase").style.backgroundColor =
+            "transparent";
+        document.getElementById("timer").style.backgroundColor =
+            "var(--timer-work)";
     } else {
-        document.getElementById("workPhase").style.backgroundColor = "transparent";
+        document.getElementById("workPhase").style.backgroundColor =
+            "transparent";
         document.getElementById("breakPhase").style.backgroundColor = "#ffffff";
-        document.getElementById("timer").style.backgroundColor = "var(--timer-break)";
+        document.getElementById("timer").style.backgroundColor =
+            "var(--timer-break)";
     }
 
     if (isPaused && isRunning == true) {
@@ -83,7 +86,8 @@ function updateUI() {
     }
 
     // Change the background position based on the timer
-    let percent = ((currentTime / (isWork ? workTime * 60 : breakTime * 60)) * 100);
+    let percent =
+        (currentTime / (isWork ? workTime * 60 : breakTime * 60)) * 100;
     if (isWork) {
         percent = 100 - percent;
     }
@@ -141,6 +145,7 @@ function monitorTimesInputs() {
 
 // A function used to initialize the page
 function onPageLoad() {
+    resetButton.style.display = "none";
     monitorTimesInputs();
 
     if (localStorage.getItem("workTime") != null) {
@@ -161,14 +166,16 @@ function onPageLoad() {
         clearInterval(currentInterval);
         updateUI();
     });
-    document.getElementById("breakPhase").addEventListener("click", function () {
-        isWork = false;
-        isPaused = true;
-        isRunning = false;
-        currentTime = breakTime * 60;
-        clearInterval(currentInterval);
-        updateUI();
-    });
+    document
+        .getElementById("breakPhase")
+        .addEventListener("click", function () {
+            isWork = false;
+            isPaused = true;
+            isRunning = false;
+            currentTime = breakTime * 60;
+            clearInterval(currentInterval);
+            updateUI();
+        });
 
     updateUI();
 }
@@ -181,6 +188,3 @@ function deleteAllLocalStorage() {
 }
 
 onPageLoad();
-
-// TO-DO:
-// - Store currentTime and currentPhase in the local storage and display them when the page is loaded

@@ -184,3 +184,25 @@ form.timerOptions label {
 .devTools div button {
     margin: 1rem;
 }
+
+/* Footer style */
+
+footer {
+    padding: 1rem;
+    border-top: var(--secondary-color) solid 2px;
+}
+
+footer p {
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: 700;
+    transition: all 0.2s ease-in-out;
+}
+
+footer a:hover {
+    color: var(--primary-color);
+}

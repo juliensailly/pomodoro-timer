@@ -190,18 +190,21 @@ function onPageLoad() {
     updateUI();
 
     // Add event listeners to dev tools
-    document.getElementById("devToolsTitle").addEventListener("click", function () {
-        console.log(document.getElementById("devButtons").className);
-        if (document.getElementById("devButtons").className == "active") {
-            document.getElementById("devButtons").style.display = "none";
-            document.getElementById("devToolsTitle").textContent = "Dev tools +";
-            document.getElementById("devButtons").className = "inactive";
-        } else {
-            document.getElementById("devButtons").style.display = "flex";
-            document.getElementById("devToolsTitle").textContent = "Dev tools -";
-            document.getElementById("devButtons").className = "active";
-        }
-    });
+    document
+        .getElementById("devToolsTitle")
+        .addEventListener("click", function () {
+            if (document.getElementById("devButtons").className == "active") {
+                document.getElementById("devButtons").style.display = "none";
+                document.getElementById("devToolsTitle").textContent =
+                    "Dev tools +";
+                document.getElementById("devButtons").className = "inactive";
+            } else {
+                document.getElementById("devButtons").style.display = "flex";
+                document.getElementById("devToolsTitle").textContent =
+                    "Dev tools -";
+                document.getElementById("devButtons").className = "active";
+            }
+        });
 }
 
 // A function used to delete the local storage

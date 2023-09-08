@@ -3,22 +3,29 @@ var workTime = 25,
     currentTime = 0,
     isWork = true,
     isPaused = true,
+    isRunning = false,
     currentInterval = null;
 const timerElement = document.getElementById("timer"), startButton = document.getElementById("startButton"), resetButton = document.getElementById("resetButton");
 resetButton.style.display = "none";
+
 // A function used to start the timer
 function startTimer() {
     isPaused = !isPaused;
     if (isPaused == false) {
         startButton.textContent = "Pause";
         resetButton.style.display = "none";
-        if (isWork) {
+
+        if (isRunning == false && isWork == true) {
             currentTime = workTime * 60;
-            currentInterval = setInterval(() => updateTimer(), 1000);
-        } else {
+            isRunning = true;
+        } else if (isRunning == false && isWork == false) {
             currentTime = breakTime * 60;
-            currentInterval = setInterval(() => updateTimer(), 1000);
+            isRunning = true;
         }
+
+        updateTimer();
+        currentInterval = setInterval(() => updateTimer(), 1000);
+        
     } else {
         startButton.textContent = "Resume";
         resetButton.style.display = "inline-block";
@@ -56,6 +63,11 @@ function updateUI() {
         document.body.style.backgroundColor = "#16a085";
         document.getElementById("title").innerText = "Break";
     }
+
+    if (isPaused) {
+        startButton.textContent = "Resume";
+        resetButton.style.display = "inline-block";
+    }
 }
 
 // A function used to reset the timer
@@ -66,6 +78,12 @@ function resetTimer() {
     resetButton.style.display = "none";
     clearInterval(currentInterval);
     currentTime = workTime * 60;
+
+    let minutes = parseInt(currentTime / 60, 10);
+    let secondes = parseInt(currentTime % 60, 10);
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    secondes = secondes < 10 ? "0" + secondes : secondes;
+    timerElement.innerText = `${minutes}:${secondes}`;
 }
 
 // A function used to decrease the timer value

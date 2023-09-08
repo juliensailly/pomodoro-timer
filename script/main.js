@@ -100,12 +100,15 @@ function updateUI() {
 // A function used to reset the timer
 function resetTimer() {
     isPaused = true;
-    isWork = true;
     isRunning = false;
     startButton.textContent = "Start";
     resetButton.style.display = "none";
     clearInterval(currentInterval);
-    currentTime = workTime * 60;
+    if (isWork) {
+        currentTime = workTime * 60;
+    } else {
+        currentTime = breakTime * 60;
+    }
 
     updateUI();
 }
@@ -149,10 +152,30 @@ function onPageLoad() {
         breakTime = localStorage.getItem("breakTime");
         document.getElementById("breakTime").value = breakTime;
     }
-
     currentTime = workTime * 60;
+
+    document.getElementById("workPhase").addEventListener("click", function () {
+        isWork = true;
+        isPaused = true;
+        isRunning = false;
+        currentTime = workTime * 60;
+        clearInterval(currentInterval);
+        updateUI();
+    });
+    document.getElementById("breakPhase").addEventListener("click", function () {
+        isWork = false;
+        isPaused = true;
+        isRunning = false;
+        currentTime = breakTime * 60;
+        clearInterval(currentInterval);
+        updateUI();
+    });
 
     updateUI();
 }
 
 onPageLoad();
+
+// TO-DO:
+// - Allow the user to select the phase
+// - Store currentTime and currentPhase in the local storage and display them when the page is loaded

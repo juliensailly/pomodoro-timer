@@ -13,6 +13,8 @@
     --primary-color: #1a1a1a;
     --secondary-color: #ffffff;
     --tertiary-color: #ff0000;
+    --background-red: #f05454;
+    --background-green: #16a085;
 }
 
 body {
@@ -22,7 +24,7 @@ body {
     background-size: 200vw;
     background-position-x: left;
     background-clip: border-box;
-    background-image: linear-gradient(90deg, rgba(240,84,84,1) 0%, rgba(240,84,84,1) 50%, rgba(22,160,133,1) 50%);
+    background-image: linear-gradient(90deg, var(--background-red) 0%, var(--background-red) 50%, var(--background-green) 50%);
 }
 
 /* Main Title */

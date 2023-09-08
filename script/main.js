@@ -37,25 +37,31 @@ function startTimer() {
 function updateTimer() {
     currentTime = currentTime <= 0 ? 0 : currentTime - 1;
 
-    let minutes = parseInt(currentTime / 60, 10);
-    let secondes = parseInt(currentTime % 60, 10);
-
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    secondes = secondes < 10 ? "0" + secondes : secondes;
-    timerElement.innerText = `${minutes}:${secondes}`;
-
     console.log(currentTime);
 
     if (currentTime <= 0) {
         isWork = !isWork;
         isPaused = true;
         clearInterval(currentInterval);
+        if (isWork) {
+            currentTime = workTime * 60;
+        } else {
+            currentTime = breakTime * 60;
+        }
     }
     updateUI();
 }
 
 // A function used to update UI and play a sound when changing state
 function updateUI() {
+
+    let minutes = parseInt(currentTime / 60, 10);
+    let secondes = parseInt(currentTime % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    secondes = secondes < 10 ? "0" + secondes : secondes;
+    timerElement.innerText = `${minutes}:${secondes}`;
+    
     if (isWork) {
         document.body.style.backgroundColor = "#f05454";
         document.getElementById("title").innerText = "Work";

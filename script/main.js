@@ -62,11 +62,11 @@ function updateUI() {
     timerElement.innerText = `${minutes}:${secondes}`;
 
     if (isWork) {
-        document.body.style.cssText = "background-image: linear-gradient(90deg, rgba(240,84,84,1) 0%, rgba(240,84,84,1) 50%, rgba(22,160,133,1) 50%)";
+        // document.body.style.backgroundImage = "linear-gradient(90deg, rgba(240,84,84,1) 0%, rgba(240,84,84,1) 50%, rgba(22,160,133,1) 50%)";
         document.getElementById("workPhase").style.backgroundColor = "#ffffff";
         document.getElementById("breakPhase").style.backgroundColor = "transparent";
     } else {
-        document.body.style.backgroundColor = "#16a085";
+        // document.body.style.backgroundImage = "linear-gradient(90deg, rgba(22,160,133,1) 0%, rgba(22,160,133,1) 50%, rgba(240,84,84,1) 50%)";
         document.getElementById("workPhase").style.backgroundColor = "transparent";
         document.getElementById("breakPhase").style.backgroundColor = "#ffffff";
     }
@@ -81,6 +81,14 @@ function updateUI() {
         startButton.textContent = "Pause";
         resetButton.style.display = "none";
     }
+
+    // Change the background position based on the timer
+    let percent = ((currentTime / (isWork ? workTime * 60 : breakTime * 60)) * 100);
+    if (isWork) {
+        percent = 100 - percent;
+    }
+    document.body.style.backgroundPositionX = `${percent}%`;
+    console.log(percent);
 
     // Play a sound when changing state
     if (currentTime == 1) {

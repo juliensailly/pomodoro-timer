@@ -62,7 +62,7 @@ function updateUI() {
     timerElement.innerText = `${minutes}:${secondes}`;
 
     if (isWork) {
-        document.body.style.backgroundColor = "#f05454";
+        document.body.style.cssText = "background-image: linear-gradient(90deg, rgba(240,84,84,1) 0%, rgba(240,84,84,1) 50%, rgba(22,160,133,1) 50%)";
         document.getElementById("workPhase").style.backgroundColor = "#ffffff";
         document.getElementById("breakPhase").style.backgroundColor = "transparent";
     } else {
@@ -70,6 +70,7 @@ function updateUI() {
         document.getElementById("workPhase").style.backgroundColor = "transparent";
         document.getElementById("breakPhase").style.backgroundColor = "#ffffff";
     }
+    document.body.style.animation = "phaseTransition 1s linear infinite alternate";
 
     if (isPaused && isRunning == true) {
         startButton.textContent = "Resume";

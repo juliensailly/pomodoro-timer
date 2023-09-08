@@ -24,19 +24,6 @@ body {
     background-clip: border-box;
 }
 
-body.workPhase {
-    animation: phaseTransition 1s linear infinite alternate;
-}
-
-@keyframes phaseTransition {
-    0% {
-        background-position-x: left;
-    }
-    100% {
-        background-position-x: right;
-    }
-}
-
 /* Main Title */
 
 #main-title {

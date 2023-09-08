@@ -70,7 +70,6 @@ function updateUI() {
         document.getElementById("workPhase").style.backgroundColor = "transparent";
         document.getElementById("breakPhase").style.backgroundColor = "#ffffff";
     }
-    document.body.style.animation = "phaseTransition 1s linear infinite alternate";
 
     if (isPaused && isRunning == true) {
         startButton.textContent = "Resume";
@@ -81,6 +80,12 @@ function updateUI() {
     } else {
         startButton.textContent = "Pause";
         resetButton.style.display = "none";
+    }
+
+    // Play a sound when changing state
+    if (currentTime == 1) {
+        let audio = new Audio("sound/bell.wav");
+        audio.play();
     }
 }
 

@@ -46,11 +46,23 @@ h1 {
     align-items: center;
 }
 
-h2 {
-    font-size: 2rem;
+/* Phase display */
+
+div#phases {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+div#phases p {
+    margin: 2rem 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    border: var(--secondary-color) solid 2px;
+    font-size: 1.5rem;
     font-weight: 700;
-    text-align: center;
-    margin: 2rem;
+    cursor: pointer;
 }
 
 /* Timer */

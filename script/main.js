@@ -63,10 +63,12 @@ function updateUI() {
 
     if (isWork) {
         document.body.style.backgroundColor = "#f05454";
-        document.getElementById("title").innerText = "Work";
+        document.getElementById("workPhase").style.backgroundColor = "#ffffff";
+        document.getElementById("breakPhase").style.backgroundColor = "transparent";
     } else {
         document.body.style.backgroundColor = "#16a085";
-        document.getElementById("title").innerText = "Break";
+        document.getElementById("workPhase").style.backgroundColor = "transparent";
+        document.getElementById("breakPhase").style.backgroundColor = "#ffffff";
     }
 
     if (isPaused && isRunning == true) {

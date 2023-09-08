@@ -4,18 +4,17 @@ var workTime = 25,
     isWork = true,
     isPaused = true;
 const timerElement = document.getElementById("timer");
-
 // A function used to start the timer
 function startTimer() {
     isPaused = false;
-    var time = 0;
+    var time = 0, currentInterval = null;
     if (isWork) {
         currentTime = workTime*60;
-        setInterval(() => updateTimer(), 1000);
+        currentInterval = setInterval(() => updateTimer(), 2);
         console.log("Work time started");
     } else {
         currentTime = breakTime*60;
-        setInterval(() => updateTimer(), 1000);
+        currentInterval = setInterval(() => updateTimer(), 1000);
     }
 }
 
@@ -23,15 +22,15 @@ function startTimer() {
 function updateTimer() {
     let minutes = parseInt(currentTime / 60, 10);
     let secondes = parseInt(currentTime % 60, 10);
-
     minutes = minutes < 10 ? "0" + minutes : minutes;
     secondes = secondes < 10 ? "0" + secondes : secondes;
-
     timerElement.innerText = `${minutes}:${secondes}`;
     currentTime = currentTime <= 0 ? 0 : currentTime - 1;
     console.log(currentTime);
     if (currentTime <= 0) {
         isWork = !isWork;
+        isPaused = !isPaused;
         startTimer();
+        clearInterval(currentInterval);
     }
 }

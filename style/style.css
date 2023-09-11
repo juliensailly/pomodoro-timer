@@ -132,7 +132,7 @@ div#controlTimerButtons button {
 
 form.timerOptions {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 2rem;
@@ -140,9 +140,13 @@ form.timerOptions {
 
 form.timerOptions div {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+form.timerOptions div div {
+    flex-direction: column;
 }
 
 form.timerOptions input {
@@ -162,6 +166,20 @@ form.timerOptions input:focus {
 form.timerOptions label {
     font-size: 1.3rem;
     font-weight: 700;
+}
+
+form.timerOptions div.notificationCheck {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+input#notificationCheck {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    border: none;
 }
 
 /* Dev tools style */

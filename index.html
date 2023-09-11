@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style/style.css">
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style/style.css" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
         <title>Pomodoro timer</title>
     </head>
     <body>
@@ -13,7 +13,7 @@
             <img
                 src="img/hourglass-end-solid.png"
                 alt="Logo representing an hourglass"
-            >
+            />
         </div>
         <div id="container">
             <div id="phases">
@@ -30,26 +30,37 @@
 
             <form action="javascript:void(0);" class="timerOptions">
                 <div>
-                    <label for="workTime">Work time</label>
-                    <input
-                        type="number"
-                        id="workTime"
-                        name="workTime"
-                        value="25"
-                        min="1"
-                        max="120"
-                    >
+                    <div>
+                        <label for="workTime">Work time</label>
+                        <input
+                            type="number"
+                            id="workTime"
+                            name="workTime"
+                            value="25"
+                            min="1"
+                            max="120"
+                        />
+                    </div>
+                    <div>
+                        <label for="breakTime">Break time</label>
+                        <input
+                            type="number"
+                            id="breakTime"
+                            name="breakTime"
+                            value="5"
+                            min="1"
+                            max="120"
+                        />
+                    </div>
                 </div>
-                <div>
-                    <label for="breakTime">Break time</label>
+
+                <div class="notificationCheck">
+                    <label for="notificationCheck">Allow notification ?</label>
                     <input
-                        type="number"
-                        id="breakTime"
-                        name="breakTime"
-                        value="5"
-                        min="1"
-                        max="120"
-                    >
+                        type="checkbox"
+                        name="notificationCheck"
+                        id="notificationCheck"
+                    />
                 </div>
             </form>
 

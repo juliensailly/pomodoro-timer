@@ -45,4 +45,3 @@ Boost your productivity and master the art of time management with the Pomodoro 
 
 ## TO-DO
 - Lancer notif quand phase terminée
-- Changer fond d'écran

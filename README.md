@@ -44,6 +44,5 @@ Special thanks to the Pomodoro Technique for helping people work more efficientl
 Boost your productivity and master the art of time management with the Pomodoro Timer. If you have any questions, feedback, or suggestions, feel free to get in touch. Happy pomodoro-ing! 🍅🎉
 
 ## TO-DO
-- Ajouter le timer dans le title de l'onglet
 - Lancer notif quand phase terminée
-- Retirer bouton pause
+- Changer fond d'écran

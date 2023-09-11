@@ -4,7 +4,8 @@ var workTime = 25,
     currentTime = 0,
     isWork = true,
     isRunning = false,
-    currentInterval = null;
+    currentInterval = null,
+    title = "Pomodoro Timer";
 const timerElement = document.getElementById("timer"),
     startButton = document.getElementById("startButton");
 
@@ -48,7 +49,7 @@ function updateUI() {
 
     minutes = minutes < 10 ? "0" + minutes : minutes;
     secondes = secondes < 10 ? "0" + secondes : secondes;
-    timerElement.innerText = `${minutes}:${secondes}`;
+    timerElement.innerText = minutes + ":" + secondes;
 
     if (isWork) {
         document.getElementById("workPhase").style.backgroundColor = "#ffffff";
@@ -76,7 +77,14 @@ function updateUI() {
     if (isWork) {
         percent = 100 - percent;
     }
-    document.body.style.backgroundPositionX = `${percent}%`;
+    document.body.style.backgroundPositionX = percent + "%";
+
+    // Change the title based on the timer
+    if (isWork) {
+        document.title = minutes + ":" + secondes + " - " + title;
+    } else {
+        document.title = minutes + ":" + secondes + " - Break - " + title;
+    }
 
     // Play a sound when changing state
     if (currentTime == 1) {
@@ -186,14 +194,14 @@ function onPageLoad() {
             }
         });
 
-        // Add event listeners to Start and Reset button
-        startButton.addEventListener("click", function () {
-            if (isRunning == false) {
-                startTimer();
-            } else {
-                resetTimer();
-            }
-        });
+    // Add event listeners to Start and Reset button
+    startButton.addEventListener("click", function () {
+        if (isRunning == false) {
+            startTimer();
+        } else {
+            resetTimer();
+        }
+    });
 }
 
 // A function used to delete the local storage

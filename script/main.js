@@ -1,13 +1,15 @@
 // Storage of state variables and important DOM elements
-var workTime = 25,
+let workTime = 25,
     breakTime = 5,
     currentTime = 0,
     isWork = true,
     isRunning = false,
     currentInterval = null,
-    title = "Pomodoro Timer";
+    title = "Pomodoro Timer",
+    notificationAllowed = true;
 const timerElement = document.getElementById("timer"),
-    startButton = document.getElementById("startButton");
+    startButton = document.getElementById("startButton"),
+    notificationCheck = document.getElementById("notificationCheck");
 
 // A function used to start the timer
 function startTimer() {
@@ -156,6 +158,9 @@ function onPageLoad() {
         breakTime = localStorage.getItem("breakTime");
         document.getElementById("breakTime").value = breakTime;
     }
+    if (localStorage.getItem("notificationAllowed") != null) {
+        notificationAllowed = localStorage.getItem("notificationAllowed");
+    }
     currentTime = workTime * 60;
 
     document.getElementById("workPhase").addEventListener("click", function () {
@@ -202,6 +207,28 @@ function onPageLoad() {
             resetTimer();
         }
     });
+
+    // Check if notifications are enabled
+    if (Notification.permission == "granted" && notificationAllowed == true) {
+        notificationCheck.checked = true;
+    } else {
+        console.log("Notifications are not allowed");
+    }
+
+    // Add event listerner to the notification button
+    notificationCheck.addEventListener("click", function () {
+            if (notificationCheck.checked == true) {
+                notificationAllowed = true;
+                localStorage.setItem("notificationAllowed", true);
+                if (Notification.permission != "granted") {
+                    Notification.requestPermission();
+                }
+            } else {
+                notificationAllowed = false;
+                localStorage.setItem("notificationAllowed", false);
+            }
+            console.log(notificationAllowed);
+        });
 }
 
 // A function used to delete the local storage

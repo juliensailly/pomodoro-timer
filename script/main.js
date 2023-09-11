@@ -6,13 +6,11 @@ var workTime = 25,
     isRunning = false,
     currentInterval = null;
 const timerElement = document.getElementById("timer"),
-    startButton = document.getElementById("startButton"),
-    resetButton = document.getElementById("resetButton");
+    startButton = document.getElementById("startButton");
 
 // A function used to start the timer
 function startTimer() {
     startButton.textContent = "Reset";
-    startButton.onclick = resetTimer();
 
     if (isRunning == false && isWork == true) {
         currentTime = workTime * 60;
@@ -32,6 +30,7 @@ function updateTimer() {
 
     if (currentTime <= 0) {
         isWork = !isWork;
+        isRunning = false;
         clearInterval(currentInterval);
         if (isWork) {
             currentTime = workTime * 60;
@@ -67,10 +66,8 @@ function updateUI() {
 
     if (isRunning == true) {
         startButton.textContent = "Reset";
-        startButton.onclick = resetButton();
     } else {
         startButton.textContent = "Start";
-        startButton.onclick = startTimer();
     }
 
     // Change the background position based on the timer
@@ -92,7 +89,6 @@ function updateUI() {
 function resetTimer() {
     isRunning = false;
     startButton.textContent = "Start";
-    startButton.onclick = startTimer();
     clearInterval(currentInterval);
     if (isWork) {
         currentTime = workTime * 60;
@@ -187,6 +183,15 @@ function onPageLoad() {
                 document.getElementById("devToolsTitle").textContent =
                     "Dev tools -";
                 document.getElementById("devButtons").className = "active";
+            }
+        });
+
+        // Add event listeners to Start and Reset button
+        startButton.addEventListener("click", function () {
+            if (isRunning == false) {
+                startTimer();
+            } else {
+                resetTimer();
             }
         });
 }

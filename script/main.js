@@ -3,7 +3,6 @@ var workTime = 25,
     breakTime = 5,
     currentTime = 0,
     isWork = true,
-    isPaused = true,
     isRunning = false,
     currentInterval = null;
 const timerElement = document.getElementById("timer"),
@@ -12,26 +11,19 @@ const timerElement = document.getElementById("timer"),
 
 // A function used to start the timer
 function startTimer() {
-    isPaused = !isPaused;
-    if (isPaused == false) {
-        startButton.textContent = "Pause";
-        resetButton.style.display = "none";
+    startButton.textContent = "Reset";
+    startButton.onclick = resetTimer();
 
-        if (isRunning == false && isWork == true) {
-            currentTime = workTime * 60;
-            isRunning = true;
-        } else if (isRunning == false && isWork == false) {
-            currentTime = breakTime * 60;
-            isRunning = true;
-        }
-
-        updateTimer();
-        currentInterval = setInterval(() => updateTimer(), 1000);
-    } else {
-        startButton.textContent = "Resume";
-        resetButton.style.display = "inline-block";
-        clearInterval(currentInterval);
+    if (isRunning == false && isWork == true) {
+        currentTime = workTime * 60;
+        isRunning = true;
+    } else if (isRunning == false && isWork == false) {
+        currentTime = breakTime * 60;
+        isRunning = true;
     }
+
+    updateTimer();
+    currentInterval = setInterval(() => updateTimer(), 1000);
 }
 
 // A function used to update the timer
@@ -40,7 +32,6 @@ function updateTimer() {
 
     if (currentTime <= 0) {
         isWork = !isWork;
-        isPaused = true;
         clearInterval(currentInterval);
         if (isWork) {
             currentTime = workTime * 60;
@@ -74,15 +65,12 @@ function updateUI() {
             "var(--timer-break)";
     }
 
-    if (isPaused && isRunning == true) {
-        startButton.textContent = "Resume";
-        resetButton.style.display = "inline-block";
-    } else if (isPaused && isRunning == false) {
-        startButton.textContent = "Start";
-        resetButton.style.display = "none";
+    if (isRunning == true) {
+        startButton.textContent = "Reset";
+        startButton.onclick = resetButton();
     } else {
-        startButton.textContent = "Pause";
-        resetButton.style.display = "none";
+        startButton.textContent = "Start";
+        startButton.onclick = startTimer();
     }
 
     // Change the background position based on the timer
@@ -102,10 +90,9 @@ function updateUI() {
 
 // A function used to reset the timer
 function resetTimer() {
-    isPaused = true;
     isRunning = false;
     startButton.textContent = "Start";
-    resetButton.style.display = "none";
+    startButton.onclick = startTimer();
     clearInterval(currentInterval);
     if (isWork) {
         currentTime = workTime * 60;
@@ -155,7 +142,6 @@ function monitorTimesInputs() {
 
 // A function used to initialize the page
 function onPageLoad() {
-    resetButton.style.display = "none";
     monitorTimesInputs();
 
     if (localStorage.getItem("workTime") != null) {
@@ -170,7 +156,6 @@ function onPageLoad() {
 
     document.getElementById("workPhase").addEventListener("click", function () {
         isWork = true;
-        isPaused = true;
         isRunning = false;
         currentTime = workTime * 60;
         clearInterval(currentInterval);
@@ -180,7 +165,6 @@ function onPageLoad() {
         .getElementById("breakPhase")
         .addEventListener("click", function () {
             isWork = false;
-            isPaused = true;
             isRunning = false;
             currentTime = breakTime * 60;
             clearInterval(currentInterval);

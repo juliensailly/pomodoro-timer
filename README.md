@@ -41,7 +41,4 @@ This Pomodoro Timer project is created and maintained by Julien Sailly. To learn
 ## Acknowledgments 🙌
 Special thanks to the Pomodoro Technique for helping people work more efficiently and effectively!
 
-Boost your productivity and master the art of time management with the Pomodoro Timer. If you have any questions, feedback, or suggestions, feel free to get in touch. Happy pomodoro-ing! 🍅🎉
-
-## TO-DO
-- Lancer notif quand phase terminée
+Boost your productivity and master the art of time management with the Pomodoro Timer. If you have any questions, feedback, or suggestions, feel free to get in touch. Enjoy your focused work sessions and make the most of your time! 🍅🎉

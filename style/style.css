@@ -120,7 +120,7 @@ div#controlTimerButtons {
 
 div#controlTimerButtons button {
     margin: 0 1rem;
-    padding: 1rem;
+    padding: 1rem 1rem 0.7rem 1rem;
     border-radius: 5px;
     border: none;
     font-size: 1.5rem;

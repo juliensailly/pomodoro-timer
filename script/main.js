@@ -6,14 +6,13 @@ let workTime = 25,
     isRunning = false,
     currentInterval = null,
     title = "Pomodoro Timer";
-    // notificationAllowed = true;
 const timerElement = document.getElementById("timer"),
-    startButton = document.getElementById("startButton");
-    // notificationCheck = document.getElementById("notificationCheck");
+    startButton = document.getElementById("startButton"),
+    buttonIcon = document.getElementById("buttonIcon");
 
 // A function used to start the timer
 function startTimer() {
-    startButton.textContent = "Reset";
+    buttonIcon.src = "img/reset.svg";
 
     if (isRunning == false && isWork == true) {
         currentTime = workTime * 60;
@@ -68,9 +67,9 @@ function updateUI() {
     }
 
     if (isRunning == true) {
-        startButton.textContent = "Reset";
+        buttonIcon.src = "img/reset.svg";
     } else {
-        startButton.textContent = "Start";
+        buttonIcon.src = "img/play.svg";
     }
 
     // Change the background position based on the timer
@@ -98,7 +97,7 @@ function updateUI() {
 // A function used to reset the timer
 function resetTimer() {
     isRunning = false;
-    startButton.textContent = "Start";
+    buttonIcon.src = "img/play.svg";
     clearInterval(currentInterval);
     if (isWork) {
         currentTime = workTime * 60;
@@ -158,9 +157,6 @@ function onPageLoad() {
         breakTime = localStorage.getItem("breakTime");
         document.getElementById("breakTime").value = breakTime;
     }
-    // if (localStorage.getItem("notificationAllowed") != null) {
-    //     notificationAllowed = localStorage.getItem("notificationAllowed");
-    // }
     currentTime = workTime * 60;
 
     document.getElementById("workPhase").addEventListener("click", function () {
@@ -207,28 +203,6 @@ function onPageLoad() {
             resetTimer();
         }
     });
-
-    // Check if notifications are enabled
-    // if (Notification.permission == "granted" && notificationAllowed == true) {
-    //     notificationCheck.checked = true;
-    // } else {
-    //     console.log("Notifications are not allowed");
-    // }
-
-    // Add event listerner to the notification button
-    // notificationCheck.addEventListener("click", function () {
-    //         if (notificationCheck.checked == true) {
-    //             notificationAllowed = true;
-    //             localStorage.setItem("notificationAllowed", true);
-    //             if (Notification.permission != "granted") {
-    //                 Notification.requestPermission();
-    //             }
-    //         } else {
-    //             notificationAllowed = false;
-    //             localStorage.setItem("notificationAllowed", false);
-    //         }
-    //         console.log(notificationAllowed);
-    //     });
 }
 
 // A function used to delete the local storage

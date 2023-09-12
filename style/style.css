@@ -128,6 +128,10 @@ div#controlTimerButtons button {
     cursor: pointer;
 }
 
+img#buttonIcon {
+    width: 30px;
+}
+
 /* Timer options inputs style */
 
 form.timerOptions {

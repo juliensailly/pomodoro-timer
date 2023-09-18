@@ -97,13 +97,10 @@ function updateUI() {
 // A function used to reset the timer
 function resetTimer() {
     isRunning = false;
+    isWork = true;
     buttonIcon.src = "img/play.svg";
     clearInterval(currentInterval);
-    if (isWork) {
-        currentTime = workTime * 60;
-    } else {
-        currentTime = breakTime * 60;
-    }
+    currentTime = workTime * 60;
 
     updateUI();
 }

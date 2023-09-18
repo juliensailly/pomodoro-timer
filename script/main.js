@@ -32,8 +32,6 @@ function updateTimer() {
 
     if (currentTime <= 0) {
         isWork = !isWork;
-        isRunning = false;
-        clearInterval(currentInterval);
         if (isWork) {
             currentTime = workTime * 60;
         } else {
